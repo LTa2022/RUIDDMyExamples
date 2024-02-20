@@ -1,0 +1,49 @@
+﻿<reactiveui:ReactiveUserControl   
+                         xmlns:vm="clr-namespace:RUIDDMyExamples"
+                   x:TypeArguments="vm:SampleListViewModel"
+              xmlns:reactiveui="http://reactiveui.net"
+
+    
+    x:Class="RUIDDMyExamples.SampleListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RUIDDMyExamples"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <Label>Per page:</Label>
+                <TextBox Name="tbxPerPage" Width="32"></TextBox>
+                <Canvas Width="25"></Canvas>
+                <Button Name="btnPrev" Width="59">Prev</Button>
+                <Button Name="btnNext" Width="60">Next</Button>
+                <Canvas Width="24"></Canvas>
+                <TextBox  Name="tbxPageNr" Width="28"></TextBox>
+                <Label>/</Label>
+                <Label Name="lblMaxPage">100</Label>
+                <CheckBox VerticalAlignment="Center" Name="cbxReview">Only marked for review</CheckBox>
+                <Label>Search by digit in id:</Label>
+                <TextBox Name="tbxSearch" Width="100"></TextBox>
+            </StackPanel>
+            <ScrollViewer>
+                <ItemsControl Name="icSamples" d:ItemsSource="{d:SampleData ItemCount=6}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Label Name="lblID" Content="{Binding Model.Id}" ></Label>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+        </DockPanel>
+    </Grid>
+</reactiveui:ReactiveUserControl>
